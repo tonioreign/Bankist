@@ -8,8 +8,20 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
+const section2 = document.querySelector('#section--2');
+const section3 = document.querySelector('#section--3');
+const links = document.querySelector('.nav__links');
 
 // Functions
+
+// Scrolling smoothly from nav links
+links.addEventListener('click', e => {
+  e.preventDefault();
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
 
 const openModal = e => {
   e.preventDefault();
@@ -26,7 +38,7 @@ const closeModal = () => {
 
 // Smooth scrolling button
 btnScrollTo.addEventListener('click', e => {
-  const s1cords = section1.getBoundingClientRect(); // get cords
+  // const s1cords = section1.getBoundingClientRect(); // get cords
 
   section1.scrollIntoView({ behavior: 'smooth' });
 
@@ -53,4 +65,3 @@ document.addEventListener('keydown', function (e) {
 });
 
 //////////////////////////////////////////////////////////////////
-
