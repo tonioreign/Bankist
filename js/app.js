@@ -11,6 +11,9 @@ const section1 = document.querySelector('#section--1');
 const section2 = document.querySelector('#section--2');
 const section3 = document.querySelector('#section--3');
 const links = document.querySelector('.nav__links');
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
 
 // Functions
 
@@ -35,6 +38,25 @@ const closeModal = () => {
 };
 
 // Event Listeners
+
+// Activating Content Tabs
+
+tabsContainer.addEventListener('click', e => {
+  const clicked = e.target.closest('.operations__tab');
+
+  // Guard clause
+  if (!clicked) return;
+
+  // Active tabs
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+  clicked.classList.add('operations__tab--active');
+
+  // Active content
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
 
 // Smooth scrolling button
 btnScrollTo.addEventListener('click', e => {
