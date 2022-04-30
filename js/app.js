@@ -2,6 +2,7 @@
 
 // Selecting Elements
 
+const nav = document.querySelector('.nav');
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
@@ -16,6 +17,19 @@ const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 
 // Functions
+
+const handleHover = (e, opacity) => {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(sib => {
+      if (sib !== link) sib.style.opacity = opacity;
+    });
+    logo.style.opacity = opacity;
+  }
+};
 
 // Scrolling smoothly from nav links
 links.addEventListener('click', e => {
@@ -38,6 +52,15 @@ const closeModal = () => {
 };
 
 // Event Listeners
+
+// Menu fade animation
+nav.addEventListener('mouseover', e => {
+  handleHover(e, 0.5);
+});
+
+nav.addEventListener('mouseout', e => {
+  handleHover(e, 1);
+});
 
 // Activating Content Tabs
 
