@@ -16,8 +16,32 @@ const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 
+//////////////////////////////////////////////
+
 // Functions
 
+// Reveal Section
+const allSections = document.querySelectorAll('.section');
+
+const revealSection = (entries, observer) => {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+};
+
+const sectionObeserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+allSections.forEach(section => {
+  sectionObeserver.observe(section);
+  section.classList.add('section--hidden');
+});
+//////////////////////////////////////////////
+
+// Fading links on hover
 const handleHover = (e, opacity) => {
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
@@ -31,6 +55,8 @@ const handleHover = (e, opacity) => {
   }
 };
 
+//////////////////////////////////////////////
+
 // Scrolling smoothly from nav links
 links.addEventListener('click', e => {
   e.preventDefault();
@@ -39,6 +65,8 @@ links.addEventListener('click', e => {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+//////////////////////////////////////////////
 
 const openModal = e => {
   e.preventDefault();
@@ -62,6 +90,8 @@ nav.addEventListener('mouseout', e => {
   handleHover(e, 1);
 });
 
+//////////////////////////////////////////////
+
 // Activating Content Tabs
 
 tabsContainer.addEventListener('click', e => {
@@ -81,6 +111,8 @@ tabsContainer.addEventListener('click', e => {
     .classList.add('operations__content--active');
 });
 
+//////////////////////////////////////////////
+
 // Smooth scrolling button
 btnScrollTo.addEventListener('click', e => {
   // const s1cords = section1.getBoundingClientRect(); // get cords
@@ -95,6 +127,8 @@ btnScrollTo.addEventListener('click', e => {
   //   behavior: 'smooth',
   // });
 });
+
+//////////////////////////////////////////////
 
 // Modal Window
 

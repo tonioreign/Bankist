@@ -1,14 +1,14 @@
 :root {
-  --color-primary: #5ec576;
+  --color-primary: #34c6da;
   --color-secondary: #ffcb03;
   --color-tertiary: #ff585f;
-  --color-primary-darker: #4bbb7d;
+  --color-primary-darker: #43b6d3;
   --color-secondary-darker: #ffbb00;
   --color-tertiary-darker: #fd424b;
   --color-primary-opacity: #5ec5763a;
   --color-secondary-opacity: #ffcd0331;
   --color-tertiary-opacity: #ff58602d;
-  --gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
+  --gradient-primary: linear-gradient(to top left, #39b385, #43b6d3);
   --gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
 }
 
@@ -28,7 +28,7 @@ body {
   font-weight: 300;
   color: #444;
   line-height: 1.9;
-  background-color: #f3f3f3;
+  background-color: #f5f5f5;
 }
 
 /* GENERAL ELEMENTS */
@@ -123,7 +123,7 @@ img {
 }
 
 /* nav and stickly class at the same time */
-.nav.sticky {
+.sticky {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.95);
 }
